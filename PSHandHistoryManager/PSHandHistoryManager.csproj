@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EEA277ED-1DBC-4F04-87F2-597266A29DC6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PSHandHistoryManager</RootNamespace>
+    <AssemblyName>PSHandHistoryManager</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>PSHandHistoryManager.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\FormHelper.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Setup\ArchiveFolderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setup\ArchiveFolderForm.Designer.cs">
+      <DependentUpon>ArchiveFolderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\ArchiveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setup\ArchiveForm.Designer.cs">
+      <DependentUpon>ArchiveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\AutoRunHUDForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setup\AutoRunHUDForm.Designer.cs">
+      <DependentUpon>AutoRunHUDForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\AutoRunHUDPathForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setup\AutoRunHUDPathForm.Designer.cs">
+      <DependentUpon>AutoRunHUDPathForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\AutoRunProcessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setup\AutoRunProcessForm.Designer.cs">
+      <DependentUpon>AutoRunProcessForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\AutoRunPSForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setup\AutoRunPSForm.Designer.cs">
+      <DependentUpon>AutoRunPSForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\PokerStarsFormFolderManual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setup\PokerStarsFormFolderManual.Designer.cs">
+      <DependentUpon>PokerStarsFormFolderManual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\PokerStarsFormInitial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setup\PokerStarsFormInitial.Designer.cs">
+      <DependentUpon>PokerStarsFormInitial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\SetupFinishForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setup\SetupFinishForm.Designer.cs">
+      <DependentUpon>SetupFinishForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HandManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setup\SetupInitialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setup\SetupInitialForm.Designer.cs">
+      <DependentUpon>SetupInitialForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\StorageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setup\StorageForm.Designer.cs">
+      <DependentUpon>StorageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\StorageModeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setup\StorageModeForm.Designer.cs">
+      <DependentUpon>StorageModeForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MainForm.de-DE.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.en-US.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Setup\ArchiveFolderForm.de-DE.resx">
+      <DependentUpon>ArchiveFolderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\ArchiveFolderForm.en-US.resx">
+      <DependentUpon>ArchiveFolderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\ArchiveFolderForm.resx">
+      <DependentUpon>ArchiveFolderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\ArchiveForm.de-DE.resx">
+      <DependentUpon>ArchiveForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\ArchiveForm.resx">
+      <DependentUpon>ArchiveForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\AutoRunHUDForm.de-DE.resx">
+      <DependentUpon>AutoRunHUDForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\AutoRunHUDForm.resx">
+      <DependentUpon>AutoRunHUDForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\AutoRunHUDPathForm.de-DE.resx">
+      <DependentUpon>AutoRunHUDPathForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\AutoRunHUDPathForm.en-US.resx">
+      <DependentUpon>AutoRunHUDPathForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\AutoRunHUDPathForm.resx">
+      <DependentUpon>AutoRunHUDPathForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\AutoRunProcessForm.de-DE.resx">
+      <DependentUpon>AutoRunProcessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\AutoRunProcessForm.resx">
+      <DependentUpon>AutoRunProcessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\AutoRunPSForm.de-DE.resx">
+      <DependentUpon>AutoRunPSForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\AutoRunPSForm.resx">
+      <DependentUpon>AutoRunPSForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\PokerStarsFormFolderManual.de-DE.resx">
+      <DependentUpon>PokerStarsFormFolderManual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\PokerStarsFormFolderManual.en-US.resx">
+      <DependentUpon>PokerStarsFormFolderManual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\PokerStarsFormFolderManual.resx">
+      <DependentUpon>PokerStarsFormFolderManual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\PokerStarsFormInitial.de-DE.resx">
+      <DependentUpon>PokerStarsFormInitial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\PokerStarsFormInitial.en-US.resx">
+      <DependentUpon>PokerStarsFormInitial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\PokerStarsFormInitial.resx">
+      <DependentUpon>PokerStarsFormInitial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\SetupFinishForm.de-DE.resx">
+      <DependentUpon>SetupFinishForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\SetupFinishForm.resx">
+      <DependentUpon>SetupFinishForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\SetupInitialForm.de-DE.resx">
+      <DependentUpon>SetupInitialForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\SetupInitialForm.en-US.resx">
+      <DependentUpon>SetupInitialForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\SetupInitialForm.resx">
+      <DependentUpon>SetupInitialForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\StorageForm.de-DE.resx">
+      <DependentUpon>StorageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\StorageForm.resx">
+      <DependentUpon>StorageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\StorageModeForm.de-DE.resx">
+      <DependentUpon>StorageModeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\StorageModeForm.en-US.resx">
+      <DependentUpon>StorageModeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup\StorageModeForm.resx">
+      <DependentUpon>StorageModeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 und x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
