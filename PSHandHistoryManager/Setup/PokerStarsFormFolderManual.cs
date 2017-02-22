@@ -32,6 +32,9 @@ namespace PSHandHistoryManager.Setup
             else
             {
                 base.setConfigValue("SourceFolder", folders[0] + "\\");
+                Directory.CreateDirectory(folders[0] + "\\processed");
+                string hudMessage = string.Format(this.resourceManager.GetString("information.configureHUD"), folders[0] + "\\processed");
+                MessageBox.Show(hudMessage, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 StorageForm f = new StorageForm(this);
                 f.Show();
                 this.Hide();

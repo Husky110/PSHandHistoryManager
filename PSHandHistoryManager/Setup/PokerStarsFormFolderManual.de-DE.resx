@@ -147,4 +147,7 @@
   <data name="error.FolderNotFound" xml:space="preserve">
     <value>Ich konnte den Handverlaufsordner nicht finden. Bitte wiederhole die Schritte und versuche es erneut.</value>
   </data>
+  <data name="information.configureHUD" xml:space="preserve">
+    <value>Please configure you HUD so it only scans the directory {0} for new hands.</value>
+  </data>
 </root>
