@@ -14,11 +14,14 @@ namespace PSHandHistoryManager
     public partial class MainForm : HandManagerForm
     {
         public static MainForm instance;
-        public MainForm()
+
+        private string pathToAppConfig = "";
+        public MainForm(string configFilePath)
         {
             InitializeComponent();
             base.initializeHandManagerForm(this.GetType());
             MainForm.instance = this;
+            this.pathToAppConfig = configFilePath;
         }
 
         private void Main_Shown(object sender, EventArgs e)

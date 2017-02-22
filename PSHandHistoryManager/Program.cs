@@ -18,14 +18,15 @@ namespace PSHandHistoryManager
         [STAThread]
         static void Main()
         {
-            AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", Application.StartupPath + "\\App.config");
+            string configFilePath = Application.StartupPath + "\\App.config";
+            AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", configFilePath);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             if (ConfigurationManager.AppSettings["Language"] != "")
             {
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo(ConfigurationManager.AppSettings["Language"]);
             }
-            Application.Run(new MainForm());
+            Application.Run(new MainForm(configFilePath));
         }
     }
 }
