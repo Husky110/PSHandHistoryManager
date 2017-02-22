@@ -7,14 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using PSHandManagerLib.FileSystem;
 using System.Threading;
+using System.Diagnostics;
 
 namespace PSHandManagerLib
 {
     public class HandProcessor
     {
         [ThreadStatic] public static bool shutdown = false;
-        [ThreadStatic] public static int taskcounter = 0;
-        public List<Task> runningTasks = new List<Task>();
+        public static ConcurrentDictionary<Task, bool> runningTasks = new ConcurrentDictionary<Task, bool>(); //used to monitor all tasks in case of shutdown and for GUI-data
         public HandProcessor(string pathToAppConfig)
         {
             AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", pathToAppConfig);
@@ -25,15 +25,17 @@ namespace PSHandManagerLib
             FileSystemWatcher fsw = new FileSystemWatcher();
             Task fswTask = new Task(() => fsw.run());
             fswTask.Start();
-            runningTasks.Add(fswTask);
+            HandProcessor.runningTasks.TryAdd(fswTask, true);
             while (shutdown)
             {
                 Thread.Sleep(1000); //this one has to do nothing...
             }
             // shutdown - wait for all tasks to finish...
-            foreach (Task t in this.runningTasks)
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            while(HandProcessor.runningTasks.Keys.Count > 0 && sw.Elapsed.Seconds < 3)
             {
-                t.Wait();
+                Thread.Sleep(100); //check every 100ms if all tasks have finished after 3 seconds -> hard shutdown
             }
         }
     }

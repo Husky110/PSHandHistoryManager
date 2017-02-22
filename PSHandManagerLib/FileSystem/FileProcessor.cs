@@ -82,7 +82,7 @@ namespace PSHandManagerLib.FileSystem
             }
             bool y = true; //just to be there... I ignore the out value actually...
             FileSystemWatcher.files.TryRemove(this.sourceFilePath, out y);
-            FileSystemWatcher.runningTasks.TryRemove(this.attachedTask, out y);
+            HandProcessor.runningTasks.TryRemove(this.attachedTask, out y);
         }
     }
 }

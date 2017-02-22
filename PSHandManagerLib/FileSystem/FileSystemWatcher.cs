@@ -16,7 +16,6 @@ namespace PSHandManagerLib.FileSystem
         private string workingDirectory = "";
         private int interval = 1; //interval on how often the PSHandhistoryfolder is beeing scaned in seconds
         public static ConcurrentDictionary<String, bool> files = new ConcurrentDictionary<string, bool>(); //used to make sure that files are beeing scaned only once - used here and within the FileProcessor
-        public static ConcurrentDictionary<Task, bool> runningTasks = new ConcurrentDictionary<Task, bool>(); //used in case of application shutdown to wait for all tasks to end - used here and within the FileProcessor
 
         public FileSystemWatcher()
         {
@@ -43,6 +42,8 @@ namespace PSHandManagerLib.FileSystem
                         fp.attachedTask = t;
                         t.Start();
                         FileSystemWatcher.files.TryAdd(foundFiles[x], true);
+                        HandProcessor.runningTasks.TryAdd(t, true);
+                        
                     }
                 }
 

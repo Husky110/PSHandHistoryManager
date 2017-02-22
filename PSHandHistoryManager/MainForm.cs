@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using PSHandManagerLib;
+using System.Threading;
 
 namespace PSHandHistoryManager
 {
     public partial class MainForm : HandManagerForm
     {
         public static MainForm instance;
+        private Task handProcessorTask;
 
         private string pathToAppConfig = "";
         public MainForm(string configFilePath)
@@ -40,6 +42,17 @@ namespace PSHandHistoryManager
             HandProcessor hp = new HandProcessor(this.pathToAppConfig);
             Task t = new Task(() => hp.run());
             t.Start();
+            this.handProcessorTask = t;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            HandProcessor.shutdown = true;
+            while(this.handProcessorTask.IsCompleted == false)
+            {
+                Thread.Sleep(100); // wait 100ms
+            }
+            this.Close();
         }
     }
 }
