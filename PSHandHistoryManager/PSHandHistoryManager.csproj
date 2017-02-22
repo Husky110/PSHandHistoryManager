@@ -289,6 +289,12 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PSHandManagerLib\PSHandManagerLib.csproj">
+      <Project>{ad56215f-d49b-4885-90ad-bf705a357ab5}</Project>
+      <Name>PSHandManagerLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

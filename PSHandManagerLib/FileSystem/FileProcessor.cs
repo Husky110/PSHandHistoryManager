@@ -70,8 +70,14 @@ namespace PSHandManagerLib.FileSystem
                         }
                     }
                     ht.handNum = handnum;
+                    ht.lines = new string[handLines.Count];
                     handLines.CopyTo(ht.lines);
-                    serializer.Serialize(new FileStream(this.workingDirectory + handnum + ".xml", FileMode.CreateNew, FileAccess.Write, FileShare.None), ht);
+                    using (FileStream fs = new FileStream(this.workingDirectory + handnum + ".xml", FileMode.CreateNew, FileAccess.Write, FileShare.None))
+                    {
+                        serializer.Serialize(fs, ht);
+                    }
+                    handLines = new List<string>();
+                    freespacecounter = 0;
                 }
             }
             bool y = true; //just to be there... I ignore the out value actually...

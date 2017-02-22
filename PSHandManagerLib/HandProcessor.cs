@@ -18,6 +18,10 @@ namespace PSHandManagerLib
         public HandProcessor(string pathToAppConfig)
         {
             AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", pathToAppConfig);
+        }
+
+        public void run()
+        {
             FileSystemWatcher fsw = new FileSystemWatcher();
             Task fswTask = new Task(() => fsw.run());
             fswTask.Start();
@@ -27,7 +31,7 @@ namespace PSHandManagerLib
                 Thread.Sleep(1000); //this one has to do nothing...
             }
             // shutdown - wait for all tasks to finish...
-            foreach(Task t in this.runningTasks)
+            foreach (Task t in this.runningTasks)
             {
                 t.Wait();
             }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using PSHandManagerLib;
 
 namespace PSHandHistoryManager
 {
@@ -32,6 +33,13 @@ namespace PSHandHistoryManager
                 Setup.SetupInitialForm f = new Setup.SetupInitialForm();
                 f.Show();
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            HandProcessor hp = new HandProcessor(this.pathToAppConfig);
+            Task t = new Task(() => hp.run());
+            t.Start();
         }
     }
 }
