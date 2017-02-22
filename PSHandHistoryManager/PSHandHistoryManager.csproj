@@ -261,10 +261,6 @@
     <EmbeddedResource Include="Setup\StorageModeForm.resx">
       <DependentUpon>StorageModeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

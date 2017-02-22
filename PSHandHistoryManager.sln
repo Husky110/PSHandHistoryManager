@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSHHManLib", "PSHHManLib\PSHHManLib\PSHHManLib.csproj", "{647164A9-87D8-4780-8EEF-0063D4AB3BD1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSHandHistoryManager", "PSHandHistoryManager\PSHandHistoryManager.csproj", "{EEA277ED-1DBC-4F04-87F2-597266A29DC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSHandManagerLib", "PSHandManagerLib\PSHandManagerLib.csproj", "{AD56215F-D49B-4885-90AD-BF705A357AB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{647164A9-87D8-4780-8EEF-0063D4AB3BD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{647164A9-87D8-4780-8EEF-0063D4AB3BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{647164A9-87D8-4780-8EEF-0063D4AB3BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{647164A9-87D8-4780-8EEF-0063D4AB3BD1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EEA277ED-1DBC-4F04-87F2-597266A29DC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EEA277ED-1DBC-4F04-87F2-597266A29DC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEA277ED-1DBC-4F04-87F2-597266A29DC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEA277ED-1DBC-4F04-87F2-597266A29DC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD56215F-D49B-4885-90AD-BF705A357AB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD56215F-D49B-4885-90AD-BF705A357AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD56215F-D49B-4885-90AD-BF705A357AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD56215F-D49B-4885-90AD-BF705A357AB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
