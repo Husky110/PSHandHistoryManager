@@ -53,7 +53,7 @@ namespace PSHandManagerLib.FileSystem
                 {
                     Manager.shutdown = true;
                     // TODO: make Exceptions localizeable
-                    // TODO: better Exceptionhandling -> see ManagerException
+                    // TODO: better Exceptionhandling
                     throw new Exception("The file " + sourceFilePath +" can not be processed!" + Environment.NewLine + "Please close PokerStars and try again." + Environment.NewLine + "If that doesn't help, remove this file.",ioEx);
 
                 }
