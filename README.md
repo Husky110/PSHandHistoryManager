@@ -146,6 +146,5 @@ As soon as I have something to release I will upload the binaries.
 
 ## Which licence do you use for the programm?  
 While it's in development, I use a non-specific licence which allows you to use it for personal purposes and for contribution.  
-When the first releases comes up, I will look for a licence, which allows any personal and any non-commercial use (plus playing Poker...).  
-I don't want companies to take the code and use it as a blackbox for their product.
-So if you work for a company and you want to improve your product - feel free to use the code as inspiration. But please don't just copy it. :)
+When the first releases comes up, I switch the licence for the MIT-Licence.
+If you work for a company and you want to improve your product - feel free to use the code as inspiration. But please don't just copy it, even tho the licence allowes it. :)
