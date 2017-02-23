@@ -150,7 +150,7 @@ namespace PSHandManagerLib.FileSystem
                     ht.handLanguage = new HandLanguageDetector().detectHandLanguage(handLines, this.sourceFilePath, new DirectoryInfo(Path.GetDirectoryName(sourceFilePath)).Name);
                     if(ht.handLanguage != "English" || ht.handLanguage != "Deutsch")
                     {
-                        throw ManagerException.createManagerException("299", new object[1] { this.sourceFilePath }, new NotImplementedException());
+                        throw ManagerException.createManagerException(299, new object[1] { this.sourceFilePath }, new NotImplementedException());
                     }
                     using (FileStream fs = new FileStream(this.workingDirectory + handnum + ".xml", FileMode.CreateNew, FileAccess.Write, FileShare.None))
                     {
