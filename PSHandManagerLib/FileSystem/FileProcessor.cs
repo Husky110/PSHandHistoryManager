@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using PSHandManagerLib.Tasks;
 using PSHandManagerLib.Exceptions;
+using PSHandManagerLib.Localizations;
 
 namespace PSHandManagerLib.FileSystem
 {
@@ -56,14 +57,13 @@ namespace PSHandManagerLib.FileSystem
         /// <summary>
         /// Processes the given PokerStars-file.
         /// </summary>
+        /// <remarks>
+        /// Normaly there should be only 1 Hand per file, since the FileSystemWatcher scans pretty fast.
+        /// But to provide the functionality of scanning smaller old files(less than 10 MB) at once, we scan the whole file here.
+        /// Additionally a file could have more than one hand if a files is beeing processed later on, since the Tasklimitation of the FileSystemWatcher.
+        /// </remarks>
         public void processFile()
         {
-
-            /*
-                Normaly there should be only 1 Hand per file, since the FileSystemWatcher scans pretty fast.
-                But to provide the functionality of scanning smaller old files (less than 10 MB) at once, we scan the whole file here.
-                Additionally a file could have more than one hand if a files is beeing processed later on, since the Tasklimitation of the FileSystemWatcher.
-            */
             List<String> fileLines = new List<string>();
             try
             { 
@@ -147,6 +147,11 @@ namespace PSHandManagerLib.FileSystem
                     ht.handNum = handnum;
                     ht.lines = new string[handLines.Count];
                     handLines.CopyTo(ht.lines);
+                    ht.handLanguage = new HandLanguageDetector().detectHandLanguage(handLines, this.sourceFilePath, new DirectoryInfo(Path.GetDirectoryName(sourceFilePath)).Name);
+                    if(ht.handLanguage != "English" || ht.handLanguage != "Deutsch")
+                    {
+                        throw ManagerException.createManagerException("299", new object[1] { this.sourceFilePath }, new NotImplementedException);
+                    }
                     using (FileStream fs = new FileStream(this.workingDirectory + handnum + ".xml", FileMode.CreateNew, FileAccess.Write, FileShare.None))
                     {
                         serializer.Serialize(fs, ht);

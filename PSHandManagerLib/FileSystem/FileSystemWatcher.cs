@@ -35,7 +35,7 @@ namespace PSHandManagerLib.FileSystem
         /// <summary>
         /// Hold the number of current running Tasks. Is used for Tasklimitation and GUI callbacks.
         /// </summary>
-        [ThreadStatic] public static int currentRunningTasks = 0;
+        public static int currentRunningTasks = 0;
 
         /// <summary>
         /// Interval on how often the PSHandhistoryfolder is beeing scaned in seconds
@@ -76,7 +76,7 @@ namespace PSHandManagerLib.FileSystem
                 string[] foundFiles = Directory.GetFiles(this.sourceFolder);
                 for(int x = 0; x < foundFiles.Length; x++)
                 {
-                    if(FileSystemWatcher.currentRunningTasks < this.maxTasks)
+                    if (FileSystemWatcher.currentRunningTasks < this.maxTasks)
                     { 
                         int ignoreout = 0;
                         bool alreadyInProcess = FileSystemWatcher.files.TryGetValue(foundFiles[x], out ignoreout); //check if we already know the file

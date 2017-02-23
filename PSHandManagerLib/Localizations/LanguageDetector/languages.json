@@ -1,0 +1,81 @@
+﻿/* 
+	Magyar has to be detected hardcoded, since it's the only language where the Seat-lines start with a number...
+ */
+{
+  "Místo": {
+    "1": "Cestina"
+  },
+  "Plads": {
+    "1": "Dansk"
+  },
+  "Platz": {
+    "1": "Deutsch"
+  },
+  "Istekoht": {
+    "1": "Eesti"
+  },
+  "Seat": {
+    "1": "English"
+  },
+  "Place": {
+    "1": "Francaise"
+  },
+  "Θέση": {
+    "1": "Greek"
+  },
+  "Sjedalo": {
+    "1": "Hrvatski"
+  },
+  "Posto": {
+    "1": "Italiano"
+  },
+  "シート": {
+    "1": "Japanese"
+  },
+  "Plaats": {
+    "1": "Nederlands"
+  },
+  "Sete": {
+    "1": "Norsk"
+  },
+  "Miejsce": {
+    "1": "Polski"
+  },
+  "Locul": {
+    "1": "Romana"
+  },
+  "Място": {
+    "1": "Russian-Bulgarian"
+  },
+  "Місце": {
+    "1": "Russian-Ukraine"
+  },
+  "Место": {
+    "1": "Russian"
+  },
+  "Sedež": {
+    "1": "Slovenscina"
+  },
+  "Paikka": {
+    "1": "Suomi"
+  },
+  "Plats": {
+    "1": "Svenska"
+  },
+  "座位": {
+    "发牌给{0}": "Chinese",
+    "發牌給{0}": "Taiwanese"
+  },
+  "Vieta": {
+    "{0} kārtis": "Latviesu",
+    "Padalinta {0}": "Lietuviu"
+  },
+  "Lugar": {
+    "*** CARTAS DA MÃO ***": "Portugues-Brasil",
+    "*** CARTAS HOLE ***": "Portugues"
+  },
+  "Asiento": {
+    "Repartido a {0}": "Espanol-LatinAmerica",
+    "Repartidas a {0}": "Espanol"
+  }
+}

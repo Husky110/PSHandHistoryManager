@@ -14,10 +14,13 @@ namespace PSHandManagerLib.Exceptions
     {
         /// <summary>
         /// Holds the localized errormessages
+        /// <remarks>
         /// IDs:
         /// 100 - 199 -> Manager
         /// 200 - 299 -> FileSystemWatcher + FileProcessor
         /// 300 - 399 -> HandProcessor
+        /// 400 - 499 -> Language
+        /// </remarks>
         /// </summary>
         public static Dictionary<int, String> messages;
 

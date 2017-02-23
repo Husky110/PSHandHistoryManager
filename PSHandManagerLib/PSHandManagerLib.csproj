@@ -48,6 +48,7 @@
     <Compile Include="Exceptions\ManagerException.cs" />
     <Compile Include="FileSystem\FileProcessor.cs" />
     <Compile Include="FileSystem\FileSystemWatcher.cs" />
+    <Compile Include="Localizations\HandLanguageDetector.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tasks\HandTask.cs" />
@@ -55,13 +56,16 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Localizations\Exceptions\de-DE.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Localizations\Exceptions\en-US.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localizations\LanguageDetector\languages.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

@@ -18,6 +18,11 @@ namespace PSHandManagerLib.Tasks
         public string handSourceFilename;
 
         /// <summary>
+        /// The language of this hand
+        /// </summary>
+        public string handLanguage;
+
+        /// <summary>
         /// PokerStarsHand-ID
         /// PokerStars uses a x64 unsigned int for the ID.
         /// In order to run the Manager on a x86-System this ID is stored as a string.

@@ -9,6 +9,7 @@ using PSHandManagerLib.FileSystem;
 using System.Threading;
 using System.Diagnostics;
 using PSHandManagerLib.Exceptions;
+using PSHandManagerLib.Localizations;
 
 namespace PSHandManagerLib
 {
@@ -25,11 +26,11 @@ namespace PSHandManagerLib
         /// <summary>
         /// Hold the current culture. Set here to avoid Deadlocks on Configuration
         /// </summary>
-        [ThreadStatic] public static string culture = "";
+        public static string culture = "";
         /// <summary>
         /// Holds the path to the root of PSHandhistoryManager -> mainly used in ExceptionHandling to get the localized errormessages
         /// </summary>
-        [ThreadStatic] public static string appPath = "";
+        public static string appPath = "";
 
         /// <summary>
         /// Used to monitor all tasks in case of shutdown and for GUI-data
@@ -42,9 +43,10 @@ namespace PSHandManagerLib
         public Manager(string appPath)
         {
             AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", appPath + "\\App.config");
-            Manager.culture = ConfigurationManager.AppSettings["Language"]; //TODO: Bug -> right after setup this value is not set. restart of program loads is correct
+            Manager.culture = ConfigurationManager.AppSettings["Language"];
             Manager.appPath = appPath;
             ManagerException.initializeLocalizedErrorMessages();
+            HandLanguageDetector.initializeHandLanguageDetector();
         }
 
         /// <summary>
