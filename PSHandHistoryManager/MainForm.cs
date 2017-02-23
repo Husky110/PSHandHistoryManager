@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using PSHandManagerLib;
 using System.Threading;
+using System.IO;
 
 namespace PSHandHistoryManager
 {
@@ -39,7 +40,7 @@ namespace PSHandHistoryManager
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Manager hp = new Manager(this.pathToAppConfig);
+            Manager hp = new Manager(this.pathToAppConfig, Application.StartupPath);
             Task t = new Task(() => hp.run());
             t.Start();
             this.handProcessorTask = t;

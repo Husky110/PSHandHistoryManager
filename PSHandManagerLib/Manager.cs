@@ -8,19 +8,23 @@ using System.Threading.Tasks;
 using PSHandManagerLib.FileSystem;
 using System.Threading;
 using System.Diagnostics;
+using PSHandManagerLib.Exceptions;
 
 namespace PSHandManagerLib
 {
     public class Manager
     {
         [ThreadStatic] public static bool shutdown = false;
-        public static string culture = "";
+        [ThreadStatic] public static string culture = "";
+        [ThreadStatic] public static string appPath = "";
+
         public static ConcurrentDictionary<Task, bool> runningTasks = new ConcurrentDictionary<Task, bool>(); //used to monitor all tasks in case of shutdown and for GUI-data
-        public Manager(string pathToAppConfig)
+        public Manager(string pathToAppConfig, string appPath)
         {
             AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", pathToAppConfig);
-            Manager.culture = ConfigurationManager.AppSettings["Language"];
-
+            Manager.culture = ConfigurationManager.AppSettings["Language"]; //TODO: Bug -> right after setup this value is not set. restart of program loads is correct
+            Manager.appPath = appPath;
+            ManagerException.initializeLocalizedErrorMessages();
         }
 
         public void run()

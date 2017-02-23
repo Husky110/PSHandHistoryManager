@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using PSHandManagerLib.Tasks;
+using PSHandManagerLib.Exceptions;
 
 namespace PSHandManagerLib.FileSystem
 {
@@ -52,10 +53,7 @@ namespace PSHandManagerLib.FileSystem
                 if(attempts > 10)
                 {
                     Manager.shutdown = true;
-                    // TODO: make Exceptions localizeable
-                    // TODO: better Exceptionhandling
-                    throw new Exception("The file " + sourceFilePath +" can not be processed!" + Environment.NewLine + "Please close PokerStars and try again." + Environment.NewLine + "If that doesn't help, remove this file.",ioEx);
-
+                    throw ManagerException.createManagerException(200,new object[1] { sourceFilePath }, ioEx);
                 }
                 else
                 {
