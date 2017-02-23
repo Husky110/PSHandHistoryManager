@@ -9,16 +9,43 @@ using PSHandManagerLib.Exceptions;
 
 namespace PSHandManagerLib.FileSystem
 {
+    /// <summary>
+    /// Holds the logic for a single PokerStars-file which has to be processed.
+    /// </summary>
     class FileProcessor
     {
+        /// <summary>
+        /// The path to the PokerStars-file which has to be processed.
+        /// </summary>
+        private string sourceFilePath = "";
 
-        private string sourceFilePath = ""; //to avoid threadlocks on the Configuration
-        private string workingDirectory = ""; //to avoid threadlocks on the Configuration
-        private string errorDirectory = "";
+        /// <summary>
+        /// The path to the working-directory for the serialized hands.
+        /// Stored here to avoid deadlocks on the Configuration.
+        /// </summary>
+        private string workingDirectory = "";
+
+        /// <summary>
+        /// The path to store all faulty files.
+        /// Right now it's not in use.
+        /// </summary>
+        private string errorDirectory = ""; // TODO: right now this value is not in use, whereas it realy should be...
+
+        /// <summary>
+        /// Stores the Taskobject which runs this class.
+        /// </summary>
         public Task attachedTask; //used to remove the Task from the FileSystemWatcher
-           
-        public int detectedHands = 0; // to have a callback to the GUI in case that an old file is beeing imported.
 
+        /// <summary>
+        /// Is used to have a callback to the GUI in case that an old file is beeing imported.
+        /// </summary>       
+        public int detectedHands = 0; // TODO: create usage in GUI like "found x hands in file"
+
+        /// <summary>
+        /// Initialized the FileProcessor to start work
+        /// </summary>
+        /// <param name="filePath">Path to the PokerStars-file which has to be processed.</param>
+        /// <param name="pathToWorkingDirectory">Path to the working-directory - where to output serialized hands.</param>
         public FileProcessor(string filePath, string pathToWorkingDirectory)
         {
             this.sourceFilePath = filePath;
@@ -26,10 +53,17 @@ namespace PSHandManagerLib.FileSystem
             this.errorDirectory = pathToWorkingDirectory + "\\faulty\\";
         }
 
+        /// <summary>
+        /// Processes the given PokerStars-file.
+        /// </summary>
         public void processFile()
         {
 
-            //this way is provided to process files which contain more than 1 hand -> normaly there should be only 1 hand per file
+            /*
+                Normaly there should be only 1 Hand per file, since the FileSystemWatcher scans pretty fast.
+                But to provide the functionality of scanning smaller old files (less than 10 MB) at once, we scan the whole file here.
+                Additionally a file could have more than one hand if a files is beeing processed later on, since the Tasklimitation of the FileSystemWatcher.
+            */
             List<String> fileLines = new List<string>();
             try
             { 
@@ -43,7 +77,6 @@ namespace PSHandManagerLib.FileSystem
                         }
                     }
                 }
-                File.Delete(this.sourceFilePath);
             }
             catch(IOException ioEx) //mostlikely file is in use... try again 10 times and throw an exception then...
             {
@@ -64,19 +97,19 @@ namespace PSHandManagerLib.FileSystem
                 }
 
             }
-            catch(Exception ex) //something bad goes on here...
+            catch(Exception ex) //something bad goes on here for now we shutdown... TODO: better handling that doesn't crash the whole app...
             {
                 Manager.shutdown = true;
                 throw ex;
             }
             this.createHandTasks(fileLines);
 
-            this.finishTask();
+            this.finishTask(true);
         }
 
         /// <summary>
         /// Creates HandTasks and serializes them for further processing.
-        /// This method can also be used to import old handfiles via the GUI where it's possible to split larger files into smaller chunks.
+        /// This method is used in normal processing, but can also be called directly from the GUI to process larger (more then 10 MB) old PokerStars-files.
         /// </summary>
         /// <param name="fileLines">A List of String containing one complete PokerStars-Hand</param>
         public void createHandTasks(List<String> fileLines)
@@ -127,8 +160,12 @@ namespace PSHandManagerLib.FileSystem
         /// <summary>
         /// Finishes the current FileProcessor-Task and notifies the FileSystemWatcher and the Manager
         /// </summary>
-        private void finishTask()
+        private void finishTask(bool taskSuccessful = false)
         {
+            if (taskSuccessful)
+            {
+                File.Delete(this.sourceFilePath);
+            }
             int ignoreoutFSW = 0; //just to be there... I ignore the out value actually...
             bool ignoreoutHP = false;
             FileSystemWatcher.files.TryRemove(this.sourceFilePath, out ignoreoutFSW);

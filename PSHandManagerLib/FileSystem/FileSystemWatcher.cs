@@ -10,17 +10,49 @@ using System.Configuration;
 
 namespace PSHandManagerLib.FileSystem
 {
+    /// <summary>
+    /// Scans the filesystem for new PokerStars-files and starts their processing.
+    /// </summary>
     class FileSystemWatcher
     {
+        /// <summary>
+        /// Stores the path the the PokerStars-filesfolder.
+        /// Defined here to avoid deadlocks on Configuration.
+        /// </summary>
         private string sourceFolder = "";
-        private string workingDirectory = "";
-        private int maxTasks = Environment.ProcessorCount;
-        [ThreadStatic] public static int currentRunningTasks = 0;
-        private int interval = 1; //interval on how often the PSHandhistoryfolder is beeing scaned in seconds
-        public static ConcurrentDictionary<String, int> files = new ConcurrentDictionary<string, int>(); //used to make sure that files are beeing scaned only once - used here and within the FileProcessor
 
+        /// <summary>
+        /// The path to the working-directory for the serialized hands.
+        /// Stored here to avoid deadlocks on the Configuration.
+        /// </summary>
+        private string workingDirectory = "";
+
+        /// <summary>
+        /// Stores the number of logical CPU-Cores to have not more tasks than cores available.
+        /// </summary>
+        private int maxTasks = Environment.ProcessorCount;
+
+        /// <summary>
+        /// Hold the number of current running Tasks. Is used for Tasklimitation and GUI callbacks.
+        /// </summary>
+        [ThreadStatic] public static int currentRunningTasks = 0;
+
+        /// <summary>
+        /// Interval on how often the PSHandhistoryfolder is beeing scaned in seconds
+        /// </summary>
+        private int interval = 1;
+
+        /// <summary>
+        /// Is used to make sure that files are beeing scaned only once.
+        /// </summary>
+        public static ConcurrentDictionary<String, int> files = new ConcurrentDictionary<string, int>();
+
+        /// <summary>
+        /// Initializes the FileSystemWatcher.
+        /// </summary>
         public FileSystemWatcher()
         {
+            //TODO: this is a bit sloppy... should be moved to the setup...
             this.sourceFolder = ConfigurationManager.AppSettings["SourceFolder"];
             this.workingDirectory = ConfigurationManager.AppSettings["WorkingDirectory"];
             if (Directory.Exists(this.workingDirectory) == false)
@@ -33,6 +65,10 @@ namespace PSHandManagerLib.FileSystem
             }
         }
 
+        /// <summary>
+        /// Runs the FileSystemWatcher.
+        /// Scans for new PokerStars-files and starts their processing.
+        /// </summary>
         public void run()
         {
             while(Manager.shutdown == false)
@@ -61,8 +97,7 @@ namespace PSHandManagerLib.FileSystem
                 }
 
             }
-
-            //do operations to shutdown
+            // no shutdown-operations needed. the manager does that!
         }
 
         

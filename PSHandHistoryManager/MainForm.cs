@@ -40,7 +40,7 @@ namespace PSHandHistoryManager
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Manager hp = new Manager(this.pathToAppConfig, Application.StartupPath);
+            Manager hp = new Manager(Application.StartupPath);
             Task t = new Task(() => hp.run());
             t.Start();
             this.handProcessorTask = t;
