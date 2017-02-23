@@ -39,7 +39,7 @@ namespace PSHandHistoryManager
 
         private void button3_Click(object sender, EventArgs e)
         {
-            HandProcessor hp = new HandProcessor(this.pathToAppConfig);
+            Manager hp = new Manager(this.pathToAppConfig);
             Task t = new Task(() => hp.run());
             t.Start();
             this.handProcessorTask = t;
@@ -47,7 +47,7 @@ namespace PSHandHistoryManager
 
         private void button5_Click(object sender, EventArgs e)
         {
-            HandProcessor.shutdown = true;
+            Manager.shutdown = true;
             while(this.handProcessorTask.IsCompleted == false)
             {
                 Thread.Sleep(100); // wait 100ms

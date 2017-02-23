@@ -11,13 +11,16 @@ using System.Diagnostics;
 
 namespace PSHandManagerLib
 {
-    public class HandProcessor
+    public class Manager
     {
         [ThreadStatic] public static bool shutdown = false;
+        public static string culture = "";
         public static ConcurrentDictionary<Task, bool> runningTasks = new ConcurrentDictionary<Task, bool>(); //used to monitor all tasks in case of shutdown and for GUI-data
-        public HandProcessor(string pathToAppConfig)
+        public Manager(string pathToAppConfig)
         {
             AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", pathToAppConfig);
+            Manager.culture = ConfigurationManager.AppSettings["Language"];
+
         }
 
         public void run()
@@ -25,7 +28,7 @@ namespace PSHandManagerLib
             FileSystemWatcher fsw = new FileSystemWatcher();
             Task fswTask = new Task(() => fsw.run());
             fswTask.Start();
-            HandProcessor.runningTasks.TryAdd(fswTask, true);
+            Manager.runningTasks.TryAdd(fswTask, true);
             while (shutdown)
             {
                 Thread.Sleep(1000); //this one has to do nothing...
@@ -33,7 +36,7 @@ namespace PSHandManagerLib
             // shutdown - wait for all tasks to finish...
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            while(HandProcessor.runningTasks.Keys.Count > 0 && sw.Elapsed.Seconds < 3)
+            while(Manager.runningTasks.Keys.Count > 0 && sw.Elapsed.Seconds < 3)
             {
                 Thread.Sleep(100); //check every 100ms if all tasks have finished after 3 seconds -> hard shutdown
             }
