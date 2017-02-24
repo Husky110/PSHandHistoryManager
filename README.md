@@ -2,7 +2,7 @@
 
 ## What does it do?
 ### The Problem
-PSHandHistoryManager is a free programm to solve the following problem in HUDs:  
+PSHandHistoryManager is a free program to solve the following problem in HUDs:  
 (This problem is persistent in HM2, other HUDs have to be tested!)  
 Imagine you use a HUD to track players.  
 Let's say you collect 200 hands on a player, where the player was sitting out or disconnected during 100 of them.  
@@ -114,11 +114,11 @@ As you can see, the player is eliminated from the hand, while keeping the data o
 
 #### But what if the afk-player is involed in the flop/turn/river or the only one besides me in the hand?  
 In that case PokerStarsHandHistoryManager uses a fake-player, which replaces the afk-player.  
-With that way, you don't loose any data on the other players.  
+With that way, you don't lose any data on the other players.  
 During the setup it tells you the name of the fake-player, so it can be identified within the database of your HUD.  
 This fake-player has a randomized name, so noone can make himself undetectable by using the fake-playername as accountname.
 
-## Why is the programm OpenSource and free?
+## Why is the program OpenSource and free?
 It came to my mind to monetarize this tool, but if PokerStars is not willing to help me here (see "What is the roadmap?") I will need the community.  
 Besides that, it looks like cheating to me that some people have access to an advantage, which other people don't have.  
 And I want this tool to be evaluated and allowed by PokerStars.
@@ -139,12 +139,12 @@ Problem is that PokerStars saves the files in the language the PokerStars-Client
 I've already asked PokerStars if they would provide me their localizationtables they use for their Handhistory-creation which would help me alot.  
 After the processing itself, I will focus on the User-Interface.  
 
-## When will you release the programm?  
+## When will you release the program?  
 There is no specific date so far.  
 It depends on weither PokerStars will help me (see "What is the roadmap?") and how fast I can comeup with a mostly-stable alpha.  
 As soon as I have something to release I will upload the binaries.  
 
-## Which licence do you use for the programm?  
+## Which licence do you use for the program?  
 While it's in development, I use a non-specific licence which allows you to use it for personal purposes and for contribution.  
 When the first releases comes up, I switch the licence for the MIT-Licence.
-If you work for a company and you want to improve your product - feel free to use the code as inspiration. But please don't just copy it, even tho the licence allowes it. :)
+If you work for a company and you want to improve your product - feel free to use the code as inspiration. But please don't just copy it, even tho the licence allows it. :)
