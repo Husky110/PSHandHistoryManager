@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using PSHandManagerLib.Tasks;
 using PSHandManagerLib.Exceptions;
+using PSHandManagerLib.HandProcessing;
 using PSHandManagerLib.Localizations;
 
 namespace PSHandManagerLib.FileSystem
@@ -35,12 +36,17 @@ namespace PSHandManagerLib.FileSystem
         /// <summary>
         /// Stores the Taskobject which runs this class.
         /// </summary>
-        public Task attachedTask; //used to remove the Task from the FileSystemWatcher
+        public Task attachedTask; //used to remove the Task from the FileSystemWatcher and the Manager
 
         /// <summary>
         /// Is used to have a callback to the GUI in case that an old file is beeing imported.
         /// </summary>       
         public int detectedHands = 0; // TODO: create usage in GUI like "found x hands in file"
+
+        /// <summary>
+        /// Used as a temporal storage for the created HandTasks to enque them in the HandProcessorDispatcher
+        /// </summary>
+        private List<HandTask> createdHandTasks = new List<HandTask>();
 
         /// <summary>
         /// Initialized the FileProcessor to start work
@@ -158,6 +164,7 @@ namespace PSHandManagerLib.FileSystem
                     }
                     handLines = new List<string>();
                     freespacecounter = 0;
+                    this.createdHandTasks.Add(ht);
                 }
             }
         }
@@ -170,11 +177,15 @@ namespace PSHandManagerLib.FileSystem
             if (taskSuccessful)
             {
                 File.Delete(this.sourceFilePath);
+                foreach(HandTask ht in this.createdHandTasks)
+                {
+                    HandProcessDispatcher.tasksToProcess.Enqueue(ht);
+                }
             }
             int ignoreoutFSW = 0; //just to be there... I ignore the out value actually...
-            bool ignoreoutHP = false;
+            bool ignoreoutBool = false;
             FileSystemWatcher.files.TryRemove(this.sourceFilePath, out ignoreoutFSW);
-            Manager.runningTasks.TryRemove(this.attachedTask, out ignoreoutHP);
+            Manager.runningTasks.TryRemove(this.attachedTask, out ignoreoutBool);
             FileSystemWatcher.currentRunningTasks--;
         }
     }

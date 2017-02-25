@@ -28,9 +28,9 @@ namespace PSHandManagerLib.FileSystem
         private string workingDirectory = "";
 
         /// <summary>
-        /// Stores the number of logical CPU-Cores to have not more tasks than cores available.
+        /// Stores the number of logical CPU-Cores / 2 to have not more tasks than cores available.
         /// </summary>
-        private int maxTasks = Environment.ProcessorCount;
+        private int maxTasks = Environment.ProcessorCount / 2;
 
         /// <summary>
         /// Hold the number of current running Tasks. Is used for Tasklimitation and GUI callbacks.

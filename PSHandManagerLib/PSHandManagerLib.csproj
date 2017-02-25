@@ -48,6 +48,10 @@
     <Compile Include="Exceptions\ManagerException.cs" />
     <Compile Include="FileSystem\FileProcessor.cs" />
     <Compile Include="FileSystem\FileSystemWatcher.cs" />
+    <Compile Include="HandProcessing\HandProcessDispatcher.cs" />
+    <Compile Include="HandProcessing\HandProcessor.cs" />
+    <Compile Include="HandProcessing\IHandProcessor.cs" />
+    <Compile Include="HandProcessing\LocalizedHandProcessors\EnglishHandProcessor.cs" />
     <Compile Include="Localizations\HandLanguageDetector.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,6 +67,9 @@
     </None>
     <None Include="Localizations\Exceptions\en-US.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localizations\HandProcessing\English.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Localizations\LanguageDetector\languages.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -119,7 +119,7 @@ During the setup it tells you the name of the fake-player, so it can be identifi
 This fake-player has a randomized name, so noone can make himself undetectable by using the fake-playername as accountname.
 
 ## Why is the program OpenSource and free?
-It came to my mind to monetarize this tool, but if PokerStars is not willing to help me here (see "What is the roadmap?") I will need the community.  
+It came to my mind to monetarize this tool, and since PokerStars is not willing to help processing their files, I will need the community.  
 Besides that, it looks like cheating to me that some people have access to an advantage, which other people don't have.  
 And I want this tool to be evaluated and allowed by PokerStars.
 
@@ -136,12 +136,12 @@ As today (23.Feb.2017) the following features are implemented:
 ## What is the roadmap?
 Nextup is the handprocessing itself.  
 Problem is that PokerStars saves the files in the language the PokerStars-Client runs on. This is not a problem for german or english, but I don't speak russian or chinese, or sth. like that.  
-I've already asked PokerStars if they would provide me their localizationtables they use for their Handhistory-creation which would help me alot.  
 After the processing itself, I will focus on the User-Interface.  
 
 ## When will you release the program?  
 There is no specific date so far.  
-It depends on weither PokerStars will help me (see "What is the roadmap?") and how fast I can comeup with a mostly-stable alpha.  
+But I try do be done before 01. Mar. 2017.  
+It depends on how fast I can comeup with a mostly-stable alpha.  
 As soon as I have something to release I will upload the binaries.  
 
 ## Which licence do you use for the program?  

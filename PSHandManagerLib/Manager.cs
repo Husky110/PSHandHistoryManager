@@ -10,6 +10,7 @@ using System.Threading;
 using System.Diagnostics;
 using PSHandManagerLib.Exceptions;
 using PSHandManagerLib.Localizations;
+using PSHandManagerLib.HandProcessing;
 
 namespace PSHandManagerLib
 {
@@ -54,6 +55,8 @@ namespace PSHandManagerLib
         /// </summary>
         public void run()
         {
+            //always initiate the HandProcessDispatcher BEFORE the FileSystemWatcher...
+            HandProcessDispatcher hpd = new HandProcessDispatcher();
             FileSystemWatcher fsw = new FileSystemWatcher();
             Task fswTask = new Task(() => fsw.run()); // Start this task only once for now! TODO: start this task multiple times to scan folders of multiple users on the same machine
             fswTask.Start();

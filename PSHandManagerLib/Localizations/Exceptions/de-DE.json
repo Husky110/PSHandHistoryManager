@@ -1,5 +1,6 @@
 ﻿{
   "200": "Die Datei {0} kann nicht verarbeitet werden!\r\nBitte schließe PokerStars und versuche es erneut.\r\nWenn das nicht hilft, lösche die Datei bitte.",
   "299": "Im Moment werden nur Deutsch und Englisch als Sprachen unterstützt. Bitte ändere deine Handverlaufssprache und verschiebe die Datei {0} woanders hin.",
+  "300": "Die Sprache {0} wird im Moment nicht unterstützt. Bitte ändern Sie die Sprache der Handhistory-Dateien.",
   "400": "Die Sprache der Datei {0} konnte nicht erkannt werden. Bitte ändern Sie die Sprache der Handverlaufsdateien und löschen Sie diese Datei."
 }

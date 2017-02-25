@@ -1,0 +1,16 @@
+﻿{
+  "seat": [
+    "Seat"
+  ],
+  "afk": [
+    "has timed out",
+    "is sitting out",
+    "has timed out while disconnected"
+  ],
+  "eliminateLine": [
+    "said, "
+  ],
+  "flopIndicatorLine": [
+    "*** FLOP *** "
+  ]
+}

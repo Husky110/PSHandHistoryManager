@@ -18,8 +18,9 @@ namespace PSHandManagerLib.Exceptions
         /// IDs:
         /// 100 - 199 -> Manager
         /// 200 - 299 -> FileSystemWatcher + FileProcessor
-        /// 300 - 399 -> HandProcessor
+        /// 300 - 399 -> HandProcessing
         /// 400 - 499 -> Language
+        /// 500 - 699 -> Specific localized Handprocessing
         /// </remarks>
         /// </summary>
         public static Dictionary<int, String> messages;
