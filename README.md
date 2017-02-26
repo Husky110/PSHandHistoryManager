@@ -8,16 +8,17 @@ Download version 1.0.0.0-alpha here:  [Download](http://www.husky110.de/uploads/
 For some detailed info, see section "What does it do?"
 * Processes English handhistory files
   * other languages are beeing passed through...
+  * this tool was written for Holdem-hands - other playtimes should work as well, but I can't guarantee it
 * Archive PSHandHistory-Data
 * Store processed Files as backup
 * Runs on multiple threads
 * German and English UserInterface
-* Built-in setup-routine
-  * automaticly configures PokerStars  
+* Built-in setuproutine
+  * automaticlly configures PokerStars  
 
-__BE CAREFULL! THIS TOOL IS CURRENTLY IN AN ALPHA STATE!__
+__BE CAREFUL! THIS TOOL IS CURRENTLY IN AN ALPHA STATE!__
 
-### Systemrequirements  
+### System Requirements  
 This tool should run on any PC running Windows 7 or above.  
 It is not tested on Linux or Mac!  
 On my I7-6700K it processed about 2.100 hands within 2 minutes and used about 50 MB RAM.  
@@ -38,6 +39,7 @@ Just use the issue-tracker on github.
 ### How can I contribute to the project?
 Currently there is a need for translations of handhistory-processing to other languages.  
 If you can contribute there by either coding yourself, or upload me some fully translated (your language -> english) files, you could help this project a lot! 
+Right now we need every language - except English.
 
 ### I have thousands of hands in HM2 which should be processed by your tool...
 Don't worry, I've got you covered! :)  
