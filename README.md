@@ -6,7 +6,7 @@ Download version 1.0.0.0-alpha here:  [Download](http://www.husky110.de/uploads/
 
 ### Current features:
 For some detailed info, see section "What does it do?"
-* Processes English handhistory files
+* Processes English handhistory files for one user
   * other languages are beeing passed through...
   * this tool was written for Holdem-hands - other playtimes should work as well, but I can't guarantee it
 * Archive PSHandHistory-Data

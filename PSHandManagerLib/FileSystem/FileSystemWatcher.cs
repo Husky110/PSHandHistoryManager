@@ -53,7 +53,11 @@ namespace PSHandManagerLib.FileSystem
         public FileSystemWatcher()
         {
             //TODO: this is a bit sloppy... should be moved to the setup...
-            this.sourceFolder = ConfigurationManager.AppSettings["SourceFolder"];
+            this.sourceFolder = Directory.GetDirectories(ConfigurationManager.AppSettings["SourceFolder"])[0];
+            if (this.sourceFolder.EndsWith("\\") == false)
+            {
+                this.sourceFolder += "\\";
+            }
             this.workingDirectory = ConfigurationManager.AppSettings["WorkingDirectory"];
             if (Directory.Exists(this.workingDirectory) == false)
             {
