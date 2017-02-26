@@ -1,6 +1,6 @@
 ﻿{
   "200": "The file {0} can not be processed!\r\nPlease close PokerStars and try again.\r\nIf that doesn't help, remove this file.",
-  "299": "Right now I can only process german and english hands. Please change your handhistory to one of those languages and move the file {0} somewhere else.",
+  "299": "Right now I can only process english hands. Please change your handhistory to english and move the file {0} somewhere else.",
   "300": "The language {0} is currently not supported. Please change the language of the HandHistory-files.",
   "400": "The languge in file {0} could not be detected. Please switch your handhistory to another language and delete this file."
 }

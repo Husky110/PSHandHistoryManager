@@ -120,7 +120,14 @@ namespace PSHandManagerLib.FileSystem
         /// <param name="fileLines">A List of String containing one complete PokerStars-Hand</param>
         public void createHandTasks(List<String> fileLines)
         {
-            int freespacecounter = 0;
+            bool lastLineWasFreeSpace = false;
+            /*
+                normaly a hands ends with 3 space-lines... 
+                well an export of my HM2-Database showed that is is only true in 99.81% of all cases... (4 hands where missing out of 2083) 
+                -> this was actually another bug in HM2 where the Database forgot the empty spaces after the hand.
+                To even process this I use this slightly crude evaluation.
+                TODO: implement a better solution to detect the beginning of a new hand... this one works for english and german, but might cause trouble in the future
+            */
             XmlSerializer serializer = new XmlSerializer(typeof(HandTask));
             List<String> handLines = new List<string>();
 
@@ -129,42 +136,42 @@ namespace PSHandManagerLib.FileSystem
                 if (line != "") // normal Line
                 {
                     handLines.Add(line);
+                    lastLineWasFreeSpace = false;
                 }
-                else // every PS-Hand ends with 3 empty lines... we've got one here...
+                else
                 {
-                    freespacecounter++;
-                }
-                if (freespacecounter == 3) //create a new HandTask out of the previous lines, since we've found 3 empty lines
-                {
-                    this.detectedHands++;
-                    HandTask ht = new HandTask();
-                    ht.handSourceFilename = Path.GetFileNameWithoutExtension(this.sourceFilePath);
-                    //Handnumberdetection
-                    string handnum = handLines[0].Split(':')[0];
-                    char[] handnumArray = handnum.ToCharArray();
-                    for (int x = handnumArray.Length - 1; x > 0; x--)
+                    if(lastLineWasFreeSpace == false)
                     {
-                        if (Char.IsNumber(handnumArray[x]) == false && x > 0)
+                        this.detectedHands++;
+                        HandTask ht = new HandTask();
+                        ht.handSourceFilename = Path.GetFileNameWithoutExtension(this.sourceFilePath);
+                        //Handnumberdetection
+                        string handnum = handLines[0].Split(':')[0];
+                        char[] handnumArray = handnum.ToCharArray();
+                        for (int x = handnumArray.Length - 1; x > 0; x--)
                         {
-                            handnum = handnum.Substring(x + 1, handnum.Length - x - 1);
-                            break;
+                            if (Char.IsNumber(handnumArray[x]) == false && x > 0)
+                            {
+                                handnum = handnum.Substring(x + 1, handnum.Length - x - 1);
+                                break;
+                            }
                         }
+                        ht.handNum = handnum;
+                        ht.lines = new string[handLines.Count];
+                        handLines.CopyTo(ht.lines);
+                        ht.handLanguage = new HandLanguageDetector().detectHandLanguage(handLines, this.sourceFilePath, new DirectoryInfo(Path.GetDirectoryName(sourceFilePath)).Name);
+                        if (ht.handLanguage != "English")
+                        {
+                            throw ManagerException.createManagerException(299, new object[1] { this.sourceFilePath }, new NotImplementedException());
+                        }
+                        using (FileStream fs = new FileStream(this.workingDirectory + handnum + ".xml", FileMode.CreateNew, FileAccess.Write, FileShare.None))
+                        {
+                            serializer.Serialize(fs, ht);
+                        }
+                        handLines = new List<string>();
+                        this.createdHandTasks.Add(ht);
                     }
-                    ht.handNum = handnum;
-                    ht.lines = new string[handLines.Count];
-                    handLines.CopyTo(ht.lines);
-                    ht.handLanguage = new HandLanguageDetector().detectHandLanguage(handLines, this.sourceFilePath, new DirectoryInfo(Path.GetDirectoryName(sourceFilePath)).Name);
-                    if(ht.handLanguage != "English" || ht.handLanguage != "Deutsch")
-                    {
-                        throw ManagerException.createManagerException(299, new object[1] { this.sourceFilePath }, new NotImplementedException());
-                    }
-                    using (FileStream fs = new FileStream(this.workingDirectory + handnum + ".xml", FileMode.CreateNew, FileAccess.Write, FileShare.None))
-                    {
-                        serializer.Serialize(fs, ht);
-                    }
-                    handLines = new List<string>();
-                    freespacecounter = 0;
-                    this.createdHandTasks.Add(ht);
+                    lastLineWasFreeSpace = true;
                 }
             }
         }

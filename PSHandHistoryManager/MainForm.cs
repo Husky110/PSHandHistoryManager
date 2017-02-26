@@ -49,7 +49,7 @@ namespace PSHandHistoryManager
         private void button5_Click(object sender, EventArgs e)
         {
             Manager.shutdown = true;
-            while(this.handProcessorTask.IsCompleted == false)
+            while(this.handProcessorTask != null && this.handProcessorTask.IsCompleted == false)
             {
                 Thread.Sleep(100); // wait 100ms
             }

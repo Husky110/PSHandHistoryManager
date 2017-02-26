@@ -33,10 +33,16 @@ namespace PSHandManagerLib.HandProcessing
         public static int currentRunningTasks = 0;
 
         /// <summary>
-        /// Interval on how often the Dispatcher should look for new tasks to process
+        /// Interval on how often the Dispatcher should look for new tasks to process in milliseconds
         /// </summary>
-        private int interval = 1;
+        private int interval = 10;
 
+        /// <summary>
+        /// Holds all tasks which have to be processed.
+        /// </summary>
+        /// <remarks>
+        /// This one is static so that a FileProcessor can add its created task itself and we don't have to watch the filesystem twice.
+        /// </remarks>
         public static ConcurrentQueue<HandTask> tasksToProcess = new ConcurrentQueue<HandTask>();
 
         public HandProcessDispatcher()
@@ -63,7 +69,7 @@ namespace PSHandManagerLib.HandProcessing
         {
             while(Manager.shutdown == false)
             {
-                while(HandProcessDispatcher.tasksToProcess.Count > 0 && HandProcessDispatcher.currentRunningTasks < this.maxTasks)
+                while (HandProcessDispatcher.tasksToProcess.Count > 0 && HandProcessDispatcher.currentRunningTasks < this.maxTasks)
                 {
                     HandTask ht;
                     HandProcessDispatcher.tasksToProcess.TryDequeue(out ht);
@@ -75,7 +81,7 @@ namespace PSHandManagerLib.HandProcessing
                     t.Start();
                 }
 
-                Thread.Sleep(this.interval * 1000);
+                Thread.Sleep(this.interval);
             }
         }
 
@@ -86,6 +92,7 @@ namespace PSHandManagerLib.HandProcessing
                 case "English":
                     return new EnglishHandProcessor(ht);
                 default:
+                    //TODO: way to sloppy... better would be some sort of a callback to the GUI which shows the player a warning and just take this hand and write the new files with the unprocessed lines...
                     throw ManagerException.createManagerException(300, new object[1] { ht.handLanguage }, new NotImplementedException());
             }
         }

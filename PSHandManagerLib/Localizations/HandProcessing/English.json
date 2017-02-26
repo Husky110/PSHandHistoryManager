@@ -1,16 +1,9 @@
 ﻿{
-  "seat": [
-    "Seat"
-  ],
-  "afk": [
-    "has timed out",
-    "is sitting out",
-    "has timed out while disconnected"
-  ],
-  "eliminateLine": [
-    "said, "
-  ],
-  "flopIndicatorLine": [
-    "*** FLOP *** "
-  ]
+  "seat" : "Seat",
+  "afk": "is sitting out",
+  "foldLine": "{0}: folds ",
+  "timeoutLine" :  " has timed out",
+  "chatLine": "said, ",
+  "flopIndicatorLine" : "*** FLOP *** ",
+  "holeCardIndicatorLine": "*** HOLE CARDS ***"
 }

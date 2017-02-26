@@ -23,7 +23,7 @@ namespace PSHandManagerLib
         /// <summary>
         /// If set to true, the Manager will finalize all working threads and close itself.
         /// </summary>
-        [ThreadStatic] public static bool shutdown = false;
+        public static bool shutdown = false;
         /// <summary>
         /// Hold the current culture. Set here to avoid Deadlocks on Configuration
         /// </summary>
@@ -57,11 +57,14 @@ namespace PSHandManagerLib
         {
             //always initiate the HandProcessDispatcher BEFORE the FileSystemWatcher...
             HandProcessDispatcher hpd = new HandProcessDispatcher();
+            Task hpdTask = new Task(() => hpd.run());
+            hpdTask.Start();
+            Manager.runningTasks.TryAdd(hpdTask, true);
             FileSystemWatcher fsw = new FileSystemWatcher();
             Task fswTask = new Task(() => fsw.run()); // Start this task only once for now! TODO: start this task multiple times to scan folders of multiple users on the same machine
             fswTask.Start();
             Manager.runningTasks.TryAdd(fswTask, true);
-            while (shutdown)
+            while (Manager.shutdown == false)
             {
                 Thread.Sleep(1000); //this one has to do nothing...
             }

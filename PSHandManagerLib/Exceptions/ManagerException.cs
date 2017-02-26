@@ -25,6 +25,15 @@ namespace PSHandManagerLib.Exceptions
         /// </summary>
         public static Dictionary<int, String> messages;
 
+        private int managerExceptionID = 0;
+        public int ManagerExceptionID
+        {
+            get
+            {
+                return this.managerExceptionID;
+            }
+        }
+
         /// <summary>
         /// Loads the localizations of errormessages based on the culture set in App.config
         /// </summary>
@@ -49,7 +58,7 @@ namespace PSHandManagerLib.Exceptions
         public static ManagerException createManagerException(int messageID, object[] variables, Exception innerException)
         {
             string completeMessage = String.Format(ManagerException.messages[messageID], variables);
-            return new ManagerException(completeMessage, innerException);
+            return new ManagerException(messageID, completeMessage, innerException);
         }
 
         /// <summary>
@@ -57,9 +66,9 @@ namespace PSHandManagerLib.Exceptions
         /// </summary>
         /// <param name="completemessage">The complete localized and formated errormessage</param>
         /// <param name="innerException">The catched baseexception for later use</param>
-        private ManagerException(string completemessage, Exception innerException) : base(completemessage, innerException)
+        private ManagerException(int messageID, string completemessage, Exception innerException) : base(completemessage, innerException)
         {
-
+            this.managerExceptionID = messageID;
         }
     }
 }
