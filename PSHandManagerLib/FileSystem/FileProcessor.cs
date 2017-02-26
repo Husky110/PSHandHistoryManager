@@ -28,12 +28,6 @@ namespace PSHandManagerLib.FileSystem
         private string workingDirectory = "";
 
         /// <summary>
-        /// The path to store all faulty files.
-        /// Right now it's not in use.
-        /// </summary>
-        private string errorDirectory = ""; // TODO: right now this value is not in use, whereas it realy should be...
-
-        /// <summary>
         /// Stores the Taskobject which runs this class.
         /// </summary>
         public Task attachedTask; //used to remove the Task from the FileSystemWatcher and the Manager
@@ -57,7 +51,6 @@ namespace PSHandManagerLib.FileSystem
         {
             this.sourceFilePath = filePath;
             this.workingDirectory = pathToWorkingDirectory;
-            this.errorDirectory = pathToWorkingDirectory + "\\faulty\\";
         }
 
         /// <summary>
@@ -160,10 +153,7 @@ namespace PSHandManagerLib.FileSystem
                         ht.lines = new string[handLines.Count];
                         handLines.CopyTo(ht.lines);
                         ht.handLanguage = new HandLanguageDetector().detectHandLanguage(handLines, this.sourceFilePath, new DirectoryInfo(Path.GetDirectoryName(sourceFilePath)).Name);
-                        if (ht.handLanguage != "English")
-                        {
-                            throw ManagerException.createManagerException(299, new object[1] { this.sourceFilePath }, new NotImplementedException());
-                        }
+                        List<String> supportedLanguages = new List<string>(Directory.GetFiles(Manager.appPath + "\\Localizations\\HandProcessing"));
                         using (FileStream fs = new FileStream(this.workingDirectory + handnum + ".xml", FileMode.CreateNew, FileAccess.Write, FileShare.None))
                         {
                             serializer.Serialize(fs, ht);

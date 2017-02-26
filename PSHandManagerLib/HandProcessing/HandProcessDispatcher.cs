@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Text;
 using PSHandManagerLib.Tasks;
-using PSHandManagerLib.Exceptions;
 using PSHandManagerLib.HandProcessing.LocalizedHandProcessors;
 
 namespace PSHandManagerLib.HandProcessing
 {
+    /// <summary>
+    /// This one dispatches all HandTasks which have to be processed.
+    /// Start this always before the FileSystemWatcher
+    /// </summary>
     public class HandProcessDispatcher
     {
         /// <summary>
@@ -41,7 +44,7 @@ namespace PSHandManagerLib.HandProcessing
         /// Holds all tasks which have to be processed.
         /// </summary>
         /// <remarks>
-        /// This one is static so that a FileProcessor can add its created task itself and we don't have to watch the filesystem twice.
+        /// This one is static so that a FileProcessor can add its created tasks itself and we don't have to watch the filesystem twice.
         /// </remarks>
         public static ConcurrentQueue<HandTask> tasksToProcess = new ConcurrentQueue<HandTask>();
 
@@ -51,6 +54,9 @@ namespace PSHandManagerLib.HandProcessing
             this.initializeHandProcessDispatcher();
         }
 
+        /// <summary>
+        /// Checks the filesystem for any unprocessed hands from previous sessions
+        /// </summary>
         private void initializeHandProcessDispatcher()
         {
             string[] serializedHandTasks = Directory.GetFiles(this.workingDirectory);
@@ -65,6 +71,9 @@ namespace PSHandManagerLib.HandProcessing
             }
         }
 
+        /// <summary>
+        /// Dispatches all HandTasks
+        /// </summary>
         public void run()
         {
             while(Manager.shutdown == false)
@@ -85,6 +94,11 @@ namespace PSHandManagerLib.HandProcessing
             }
         }
 
+        /// <summary>
+        /// Creates a HandProcessor based on the language of the handtask
+        /// </summary>
+        /// <param name="ht">HandTask</param>
+        /// <returns></returns>
         private IHandProcessor createHandProcessor(HandTask ht)
         {
             switch (ht.handLanguage)
@@ -92,8 +106,7 @@ namespace PSHandManagerLib.HandProcessing
                 case "English":
                     return new EnglishHandProcessor(ht);
                 default:
-                    //TODO: way to sloppy... better would be some sort of a callback to the GUI which shows the player a warning and just take this hand and write the new files with the unprocessed lines...
-                    throw ManagerException.createManagerException(300, new object[1] { ht.handLanguage }, new NotImplementedException());
+                    return new UnsupportedLanguageHandProcessor(ht);
             }
         }
 

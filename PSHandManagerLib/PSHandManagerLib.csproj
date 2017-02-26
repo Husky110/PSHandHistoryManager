@@ -52,6 +52,7 @@
     <Compile Include="HandProcessing\HandProcessor.cs" />
     <Compile Include="HandProcessing\IHandProcessor.cs" />
     <Compile Include="HandProcessing\LocalizedHandProcessors\EnglishHandProcessor.cs" />
+    <Compile Include="HandProcessing\LocalizedHandProcessors\UnsupportedLanguageHandProcessor.cs" />
     <Compile Include="Localizations\HandLanguageDetector.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

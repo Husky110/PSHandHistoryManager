@@ -10,21 +10,72 @@ using System.IO;
 
 namespace PSHandManagerLib.HandProcessing
 {
+    /// <summary>
+    /// Baseclass for all HandProcessors.
+    /// Provides the basic methods for handprocessing.
+    /// </summary>
     public abstract class HandProcessor : IHandProcessor
     {
-        protected string workingDirectory = ""; //
-        protected string outputDirectory = ""; //
+        /// <summary>
+        /// Holds the path to the workingdirectory
+        /// </summary>
+        protected string workingDirectory = "";
+
+        /// <summary>
+        /// Holds the path to the outputdirectory
+        /// </summary>
+        protected string outputDirectory = "";
+
+        /// <summary>
+        /// Weither to store all processed hands or not
+        /// </summary>
         protected bool storeProcessedHands = false;
-        protected string storageDirectory = ""; //
+
+        /// <summary>
+        /// Holds the path to the storagedirectory
+        /// </summary>
+        protected string storageDirectory = "";
+
+        /// <summary>
+        /// Weither to archive the lines from before the processing
+        /// </summary>
         protected bool archiveUnprocessedHands = false;
-        protected string archiveDirectory = "";//
-        protected string fakePlayername = ""; //
-        protected bool removeChatMessages = false;
+
+        /// <summary>
+        /// Holds the path to the archive
+        /// </summary>
+        protected string archiveDirectory = "";
+
+        /// <summary>
+        /// Holds the fakeplayer-name
+        /// </summary>
+        protected string fakePlayername = "";
+
+        /// <summary>
+        /// The filename for the output/archive/storage
+        /// </summary>
         protected string outputFilename = "";
+
+        /// <summary>
+        /// The HandTask which has to be processed
+        /// </summary>
         protected HandTask handTask; //
-        public Task attachedTask { get; set; } //
+
+        /// <summary>
+        /// The attached Task-object
+        /// </summary>
+        public Task attachedTask { get; set; }
+
+        /// <summary>
+        /// The Dictionary for the language of the HandTask
+        /// </summary>
         protected Dictionary<String, String> languageDictionary;
 
+        /// <summary>
+        /// Constructor
+        /// Initializes everything
+        /// </summary>
+        /// <param name="handtaskToProcess">The HandTask which has to be processed</param>
         protected HandProcessor(HandTask handtaskToProcess)
         {
             if(ConfigurationManager.AppSettings["StoreHands"] == "1")
@@ -41,7 +92,6 @@ namespace PSHandManagerLib.HandProcessing
             this.workingDirectory = ConfigurationManager.AppSettings["WorkingDirectory"];
             this.outputDirectory = ConfigurationManager.AppSettings["OutputDirectory"];
             this.fakePlayername = ConfigurationManager.AppSettings["FakeplayerName"];
-            this.removeChatMessages = Convert.ToBoolean(Convert.ToInt16(ConfigurationManager.AppSettings["RemoveChatMessages"]));
             this.handTask = handtaskToProcess;
             this.outputFilename = this.handTask.handNum + ".txt";
             using (FileStream fs = new FileStream(Manager.appPath + "\\Localizations\\HandProcessing\\" + handtaskToProcess.handLanguage + ".json", FileMode.Open, FileAccess.Read, FileShare.Read))
@@ -53,10 +103,20 @@ namespace PSHandManagerLib.HandProcessing
             }
         }
 
+        /// <summary>
+        /// The must-override method to detect all players within the hand
+        /// </summary>
+        /// <returns>A Dictionary of players and what to do with them</returns>
         protected abstract Dictionary<String, int> detectPlayers();
 
-        public void processHandTask()
+        /// <summary>
+        /// This is where the magic happens...
+        /// This method is virtual, so any Language can override it.
+        /// See the UnsupportedLanguageProcessor for an example
+        /// </summary>
+        public virtual void processHandTask()
         {
+
             Dictionary<String, int> players = this.detectPlayers();
             bool taskSuccessfull = true;
             string[] linesForFile; // basicly used for storage...
@@ -121,6 +181,11 @@ namespace PSHandManagerLib.HandProcessing
             this.finishTask(taskSuccessfull);
         }
 
+        /// <summary>
+        /// Creates the structure of the archive and storage
+        /// </summary>
+        /// <param name="sourcePath">Path like this: \Year\Monthnum\Daynum\Hournum</param>
+        /// <returns></returns>
         protected string createDirectoriesForArchiveAndStorage(string sourcePath)
         {
             string currentDirPath = sourcePath + DateTime.Now.Year + "\\"; // add year to path
@@ -134,6 +199,10 @@ namespace PSHandManagerLib.HandProcessing
             return currentDirPath;
         }
 
+        /// <summary>
+        /// Checks weither a directory exists or not and creates it if neccesary
+        /// </summary>
+        /// <param name="dirPath">Directory to check</param>
         protected void checkDirectoryOrCreateIt(string dirPath)
         {
             if (Directory.Exists(dirPath) == false)
@@ -142,6 +211,11 @@ namespace PSHandManagerLib.HandProcessing
             }
         }
 
+        /// <summary>
+        /// Writes a file which contains a PS-hand
+        /// </summary>
+        /// <param name="filepath">Path to the file</param>
+        /// <param name="linesToWrite">Lines which have to be written</param>
         protected void WriteHandFile(string filepath, string[] linesToWrite)
         {
             using (FileStream fs = new FileStream(filepath, FileMode.Create, FileAccess.Write, FileShare.None))
@@ -156,6 +230,10 @@ namespace PSHandManagerLib.HandProcessing
             }
         }
 
+        /// <summary>
+        /// Finalizes the task and marks itself as done
+        /// </summary>
+        /// <param name="sucessfull">Weither the task was sucessfull</param>
         protected void finishTask(bool sucessfull = false)
         {
             if (sucessfull)

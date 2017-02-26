@@ -6,11 +6,17 @@ using PSHandManagerLib.Tasks;
 
 namespace PSHandManagerLib.HandProcessing.LocalizedHandProcessors
 {
+    /// <summary>
+    /// Class to process a hand using the English language
+    /// </summary>
     class EnglishHandProcessor : HandProcessor
     {
         public EnglishHandProcessor(HandTask ht) : base(ht){}
 
-
+        /// <summary>
+        /// Detects all involed players and tells the HandProcessor what to do with them.
+        /// </summary>
+        /// <returns>All detected players which need some processing</returns>
         protected override Dictionary<String, int> detectPlayers()
         {
             // detect players and check if any is already marked as sitting out in the beginning...
