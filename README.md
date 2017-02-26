@@ -173,3 +173,7 @@ But I would realy appreciate if you would donate something. :) (see button on to
 
 ## Which licence do you use for the program?  
 I use the MIT-Licence.
+
+##What's up next?
+Right now I will wait for feedback and maybe some community help with the other languages.  
+And the Codestyle is kinda... well... not there... ;)
