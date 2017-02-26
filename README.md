@@ -1,5 +1,39 @@
 # PSHandHistoryManager
 
+## Current release
+You can either clone the source and compile it yourself or you can download a precompiled version.  
+Download version 1.0.0.0-alpha here:  [Download](www.husky110.de/uploads/PSHandHistoryManager.zip)
+
+### Current features:
+For some detailed info, see section "What does it do?"
+* Processes English handhistory files
+  * other languages are beeing passed through...
+* Archive PSHandHistory-Data
+* Store processed Files as backup
+* Runs on multiple threads
+* German and English UserInterface
+* Built-in setup-routine
+  * automaticly configures PokerStars  
+
+__BE CAREFULL! THIS TOOL IS CURRENTLY IN AN ALPHA STATE!__
+
+### Does this tool cost me anything?  
+No it doesn't. :)  
+But I would realy appreciate if you would donate something, since I've put time, brain and heart into this. :)  
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=P65FV828ZRBB2)
+
+### How to setup?
+Just download the Release and run the file "PSHandHistoryManager.exe".  
+I've implemented a friendly Bot that tells you what do to. Just carefully follow the steps. :)  
+
+### I've got an issue!
+Just use the issue-tracker on github.  
+
+### How can I contribute to the project?
+Currently there is a need for translations of handhistory-processing to other languages.  
+If you can contribute there by either coding yourself, or upload me some fully translated (your language -> english) files, you could help this project a lot! 
+
 ## What does it do?
 ### The Problem
 PSHandHistoryManager is a free program to solve the following problem in HUDs:  
@@ -115,36 +149,13 @@ As you can see, the player is eliminated from the hand, while keeping the data o
 #### But what if the afk-player is involed in the flop/turn/river or the only one besides me in the hand?  
 In that case PokerStarsHandHistoryManager uses a fake-player, which replaces the afk-player.  
 With that way, you don't lose any data on the other players.  
-During the setup it tells you the name of the fake-player, so it can be identified within the database of your HUD.  
+After the setup it tells you the name of the fake-player, so it can be identified within the database of your HUD.  
 This fake-player has a randomized name, so noone can make himself undetectable by using the fake-playername as accountname.
 
 ## Why is the program OpenSource and free?
 It came to my mind to monetarize this tool, and since PokerStars is not willing to help processing their files, I will need the community.  
 Besides that, it looks like cheating to me that some people have access to an advantage, which other people don't have.  
-And I want this tool to be evaluated and allowed by PokerStars.
-
-## What works so far?
-Nothing valuable.  
-As today (23.Feb.2017) the following features are implemented:  
-
-* a small User-Interface (right now just for debugging-purposes)
-* a setup-routine (right now just for debugging-purposes, it's more like a draft)
-* Scanning the PokerStars-HandHistory-Directory and serialize the hands for further processing (only english handhistoryfiles)
-* most of the interface-routines are localized to english and german
-* most of the current working routines are documented
-
-## What is the roadmap?
-Nextup is the handprocessing itself.  
-Problem is that PokerStars saves the files in the language the PokerStars-Client runs on. This is not a problem for german or english, but I don't speak russian or chinese, or sth. like that.  
-After the processing itself, I will focus on the User-Interface.  
-
-## When will you release the program?  
-There is no specific date so far.  
-But I try do be done before 01. Mar. 2017.  
-It depends on how fast I can comeup with a mostly-stable alpha.  
-As soon as I have something to release I will upload the binaries.  
+But I would realy appreciate if you would donate something. :) (see button on top)
 
 ## Which licence do you use for the program?  
-While it's in development, I use a non-specific licence which allows you to use it for personal purposes and for contribution.  
-When the first releases comes up, I switch the licence for the MIT-Licence.
-If you work for a company and you want to improve your product - feel free to use the code as inspiration. But please don't just copy it, even tho the licence allows it. :)
+I use the MIT-Licence.
