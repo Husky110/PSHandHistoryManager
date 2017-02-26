@@ -29,10 +29,12 @@ namespace PSHandManagerLib.HandProcessing
         {
             if(ConfigurationManager.AppSettings["StoreHands"] == "1")
             {
+                this.storeProcessedHands = true;
                 this.storageDirectory = ConfigurationManager.AppSettings["StorageFolder"];
             }
             if (ConfigurationManager.AppSettings["ArchiveUnprocessedHands"] == "1")
             {
+                this.archiveUnprocessedHands = true;
                 this.archiveDirectory = ConfigurationManager.AppSettings["ArchiveHandsFolder"];
             }
             
@@ -57,6 +59,7 @@ namespace PSHandManagerLib.HandProcessing
         {
             Dictionary<String, int> players = this.detectPlayers();
             bool taskSuccessfull = true;
+            string[] linesForFile; // basicly used for storage...
             if(players.Count > 0) //if there is a player
             {
                 List<String> newLines = new List<string>();
@@ -95,11 +98,13 @@ namespace PSHandManagerLib.HandProcessing
                         newLines.Add(line);
                     }
                 }
-                this.WriteHandFile(this.outputDirectory + this.outputFilename, newLines.ToArray());
+                linesForFile = newLines.ToArray();
+                this.WriteHandFile(this.outputDirectory + this.outputFilename, linesForFile);
             }
             else //if we have to do nothing...
             {
-                this.WriteHandFile(this.outputDirectory + this.outputFilename, handTask.lines);
+                linesForFile = handTask.lines;
+                this.WriteHandFile(this.outputDirectory + this.outputFilename, linesForFile);
             }
 
             if (this.archiveUnprocessedHands)
@@ -111,14 +116,14 @@ namespace PSHandManagerLib.HandProcessing
             if (this.storeProcessedHands)
             {
                 string filePath = this.createDirectoriesForArchiveAndStorage(this.storageDirectory) + this.outputFilename;
-                this.WriteHandFile(filePath, this.handTask.lines);
+                this.WriteHandFile(filePath, linesForFile);
             }
             this.finishTask(taskSuccessfull);
         }
 
         protected string createDirectoriesForArchiveAndStorage(string sourcePath)
         {
-            string currentDirPath = this.archiveDirectory + DateTime.Now.Year + "\\"; // add year to path
+            string currentDirPath = sourcePath + DateTime.Now.Year + "\\"; // add year to path
             checkDirectoryOrCreateIt(currentDirPath);
             currentDirPath += DateTime.Now.Month + "\\"; // add month
             checkDirectoryOrCreateIt(currentDirPath);
