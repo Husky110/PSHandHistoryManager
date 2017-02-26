@@ -2,7 +2,7 @@
 
 ## Current release
 You can either clone the source and compile it yourself or you can download a precompiled version.  
-Download version 1.0.0.0-alpha here:  [Download](www.husky110.de/uploads/PSHandHistoryManager.zip)
+Download version 1.0.0.0-alpha here:  [Download](http://www.husky110.de/uploads/PSHandHistoryManager.zip)
 
 ### Current features:
 For some detailed info, see section "What does it do?"
@@ -17,6 +17,11 @@ For some detailed info, see section "What does it do?"
 
 __BE CAREFULL! THIS TOOL IS CURRENTLY IN AN ALPHA STATE!__
 
+### Systemrequirements  
+This tool should run on any PC running Windows 7 or above.  
+It is not tested on Linux or Mac!  
+On my I7-6700K it processed about 2.100 hands within 2 minutes and used about 50 MB RAM.  
+
 ### Does this tool cost me anything?  
 No it doesn't. :)  
 But I would realy appreciate if you would donate something, since I've put time, brain and heart into this. :)  
@@ -24,7 +29,7 @@ But I would realy appreciate if you would donate something, since I've put time,
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=P65FV828ZRBB2)
 
 ### How to setup?
-Just download the Release and run the file "PSHandHistoryManager.exe".  
+Just download the release, unzip it somewhere and run the file "PSHandHistoryManager.exe".  
 I've implemented a friendly Bot that tells you what do to. Just carefully follow the steps. :)  
 
 ### I've got an issue!
@@ -33,6 +38,13 @@ Just use the issue-tracker on github.
 ### How can I contribute to the project?
 Currently there is a need for translations of handhistory-processing to other languages.  
 If you can contribute there by either coding yourself, or upload me some fully translated (your language -> english) files, you could help this project a lot! 
+
+### I have thousands of hands in HM2 which should be processed by your tool...
+Don't worry, I've got you covered! :)  
+I've written a small tool which should work on any standard-installed HM2.  
+Just run it and wait for it to finish.  
+But you will have to delete those PokerStars-Hands out of your HM2 manually...
+Download here: [Download](http://www.husky110.de/uploads/HM2HandExporter.zip)
 
 ## What does it do?
 ### The Problem
