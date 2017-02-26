@@ -120,4 +120,10 @@
   <data name="button2.Text" xml:space="preserve">
     <value>Import old hands</value>
   </data>
+  <data name="information.ConfigureForm" xml:space="preserve">
+    <value>To change the configuration I have to stop the work. Do you want to proceed?</value>
+  </data>
+  <data name="information.ImportForm" xml:space="preserve">
+    <value>This feature will become available in a future version. For now - if you want to import old files, just move them to the PokerStars-HandHistory-Folder.</value>
+  </data>
 </root>

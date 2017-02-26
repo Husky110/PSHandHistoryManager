@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,13 @@ namespace PSHandHistoryManager.Setup
         {
             InitializeComponent();
             this.initializeHandManagerForm(prevForm);
+            string fakeplayername = "";
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] textToHash = Encoding.Default.GetBytes(new DateTime().ToLongTimeString());
+            byte[] result = md5.ComputeHash(textToHash);
+            fakeplayername = BitConverter.ToString(result).Replace("-", "‌​").ToLower();
+            base.setConfigValue("FakeplayerName", fakeplayername);
+            textBox1.Text = fakeplayername;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -25,7 +33,7 @@ namespace PSHandHistoryManager.Setup
         private void button2_Click(object sender, EventArgs e)
         {
             base.setConfigValue("Setup", "0");
-            MainForm.instance.Show();
+            MainForm.instance.Close();
             this.Close();
         }
 

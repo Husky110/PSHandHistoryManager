@@ -119,36 +119,67 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>449, 52</value>
+    <value>234, 104</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Jetzt müssen wir PokerStars einstellen.
-Um korrekt zu arbeiten, brauche ich einen neuen Ordner für die Handhistory-Dateien.
-Soll ich dies automatisch machen oder möchtest du mir einen Ordner vorgeben?
-("Automatisch" wird empfohlen, wenn du der einzige bist der an diesem Rechner Poker spielt.)</value>
+    <value>Jetzt müssen wir PokerStars einrichten...
+Um korrekt zu arbeiten, werde ich
+PokerStars konfigurieren und mir eine
+Arbeitsumgebung einrichten.
+Bevor du fortfährst - entferne bitte ALLE
+PokerStars-bezogenen Ordner aus deinem HUD
+und schließe PokerStars.
+Führe nun bitte die folgenden Schritte aus:</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 192</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
     <value>Zurück</value>
   </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Schritt 1:</value>
+  </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 83</value>
+    <value>71, 120</value>
+  </data>
+  <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 23</value>
   </data>
   <data name="button2.Text" xml:space="preserve">
-    <value>Vorgabe</value>
+    <value>PokerStars einrichten</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Schritt 2:</value>
   </data>
   <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>194, 83</value>
+    <value>71, 154</value>
+  </data>
+  <data name="button3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 23</value>
   </data>
   <data name="button3.Text" xml:space="preserve">
-    <value>Automatisch</value>
+    <value>Arbeitsumgebung einrichten</value>
+  </data>
+  <data name="button4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 192</value>
+  </data>
+  <data name="button4.Text" xml:space="preserve">
+    <value>Weiter</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>464, 118</value>
+    <value>246, 223</value>
   </data>
-  <data name="error.foldernotempty" xml:space="preserve">
-    <value>Bitte wähle einen leeren Ordner aus.</value>
+  <data name="information.autorunPS" xml:space="preserve">
+    <value>Soll ich PokerStars automatisch beim Programmstart mit starten?</value>
   </data>
-  <data name="information.emptyfolder" xml:space="preserve">
-    <value>Bitte wähle einen leeren Ordner aus.</value>
+  <data name="information.setupFolder" xml:space="preserve">
+    <value>Bitte wähle einen Ordner aus, den ich als Arbeitsumgebung nutzen kann.</value>
   </data>
 </root>

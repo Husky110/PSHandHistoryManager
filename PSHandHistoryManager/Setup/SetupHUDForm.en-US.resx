@@ -119,12 +119,9 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>337, 173</value>
+    <value>308, 285</value>
   </data>
-  <data name="error.FolderNotFound" xml:space="preserve">
-    <value>I could not detect the HandHistory-Folder. Please repeat the steps and try again.</value>
-  </data>
-  <data name="information.configureHUD" xml:space="preserve">
-    <value>Please configure you HUD so it only scans the directory {0} for new hands.</value>
+  <data name="information.HUDPath" xml:space="preserve">
+    <value>Please choose the HUD-File.</value>
   </data>
 </root>

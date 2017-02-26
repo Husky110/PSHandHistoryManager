@@ -36,6 +36,7 @@ namespace PSHandHistoryManager
             AppSettingsSection appsettings = (AppSettingsSection)config.GetSection("appSettings");
             appsettings.Settings[key].Value = value;
             config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
         }
     }
 }

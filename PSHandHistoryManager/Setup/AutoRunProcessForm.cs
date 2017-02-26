@@ -14,7 +14,7 @@ namespace PSHandHistoryManager.Setup
         public AutoRunProcessForm(HandManagerForm prevForm)
         {
             InitializeComponent();
-            base.initializeHandManagerForm(prevForm);
+            base.initializeHandManagerForm(prevForm, this.GetType());
         }
 
         private void button1_Click(object sender, EventArgs e)

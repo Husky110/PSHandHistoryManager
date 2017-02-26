@@ -117,22 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Einstellungen</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 288</value>
   </data>
-  <data name="button2.Text" xml:space="preserve">
-    <value>Import</value>
+  <data name="combo_Run.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 156</value>
   </data>
-  <data name="button3.Text" xml:space="preserve">
-    <value>Start</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>252, 484</value>
   </data>
-  <data name="button5.Text" xml:space="preserve">
-    <value>Ende</value>
+  <data name="error.ArchiveInvalid" xml:space="preserve">
+    <value>Please enter a valid Archive-Folder.</value>
   </data>
-  <data name="information.ConfigureForm" xml:space="preserve">
-    <value>Um die Einstellungen zu laden, muss ich die Arbeit einstellen. Fortfahren?</value>
+  <data name="error.StorageInvalid" xml:space="preserve">
+    <value>Please enter a valid Storage-Folder.</value>
   </data>
-  <data name="information.ImportForm" xml:space="preserve">
-    <value>Im Moment ist dieses Feature noch nicht verfügbar. Wenn du alte Dateien importieren willst, verschiebe sie einfach in das PokerStars-Handverlaufsverzeichnis.</value>
+  <data name="information.configuration" xml:space="preserve">
+    <value>Even tho it's possible - I would not recommend to change something here. The validations are still pretty crude...</value>
+  </data>
+  <data name="information.save" xml:space="preserve">
+    <value>Please restart the program after you've changed something.</value>
   </data>
 </root>

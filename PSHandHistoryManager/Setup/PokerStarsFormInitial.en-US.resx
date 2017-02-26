@@ -119,12 +119,12 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>432, 118</value>
+    <value>221, 225</value>
   </data>
-  <data name="error.foldernotempty" xml:space="preserve">
-    <value>Please choose an empty folder.</value>
+  <data name="information.autorunPS" xml:space="preserve">
+    <value>Should I start PokerStars automaticly on programstart?</value>
   </data>
-  <data name="information.emptyfolder" xml:space="preserve">
-    <value>Please choose an empty folder.</value>
+  <data name="information.setupFolder" xml:space="preserve">
+    <value>Please choose a folder which I can use as my workenvironment.</value>
   </data>
 </root>

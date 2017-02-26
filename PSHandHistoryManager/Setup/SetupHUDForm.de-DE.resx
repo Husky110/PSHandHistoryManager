@@ -118,36 +118,78 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>395, 117</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Bitte führe folgende Schritte aus:
-1.) Öffne PokerStars (ohne HUD).
-2.) Gehe auf Optionen -&gt; Spielverlauf -&gt; Handverlauf.
-3.) Markiere "Meinen Handverlauf speichern" (sofern dies nicht schon markiert ist).
-4.) Klicke auf "Anderer Ordner..."
-5.) Wähle den Ordner aus, den du im vorherigen Fenster angegeben hast.
-6.) Klicke auf "Änderungen übernehmen".
-7.) Setze dich an einen beliebigen Cash-Table und spiele 2 Hände.
-8.) Verlasse den Tisch und schließe PokerStars wieder.</value>
-  </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Zurück</value>
-  </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>330, 142</value>
+    <value>241, 269</value>
   </data>
   <data name="button2.Text" xml:space="preserve">
     <value>Weiter</value>
   </data>
+  <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 237</value>
+  </data>
+  <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 17</value>
+  </data>
+  <data name="checkBox1.Text" xml:space="preserve">
+    <value>HUD bei Programmstart ausführen</value>
+  </data>
+  <data name="txt_unsupported.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 206</value>
+  </data>
+  <data name="txt_unsupported.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 20</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 173</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>298, 26</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Ausgabeverzeichnis für Hände mit nicht unterstützter Sprache
+(muss überwacht werden!):</value>
+  </data>
+  <data name="txt_Output.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 146</value>
+  </data>
+  <data name="txt_Output.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 20</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 26</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Ausgabeverzeichnis für verarbeitete Hände
+(muss überwacht werden!):</value>
+  </data>
+  <data name="txt_source.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 20</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 13</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Quellverzeichniss (muss ignoriert werden!):</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 269</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>316, 52</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Jetzt müssen wir dein HUD einrichten.
+Dein HUD muss so eingestellt sein, dass es das Quellverzeichniss
+ignoriert und die beiden Ausgabeverzeichnisse überwacht.
+Bitte stell dies manuell ein.</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>417, 173</value>
+    <value>327, 303</value>
   </data>
-  <data name="error.FolderNotFound" xml:space="preserve">
-    <value>Ich konnte den Handverlaufsordner nicht finden. Bitte wiederhole die Schritte und versuche es erneut.</value>
-  </data>
-  <data name="information.configureHUD" xml:space="preserve">
-    <value>Please configure you HUD so it only scans the directory {0} for new hands.</value>
+  <data name="information.HUDPath" xml:space="preserve">
+    <value>Bitte wähle die HUD-Datei aus.</value>
   </data>
 </root>

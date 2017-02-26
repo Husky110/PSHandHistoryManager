@@ -61,7 +61,7 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Localizations\Exceptions\de-DE.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

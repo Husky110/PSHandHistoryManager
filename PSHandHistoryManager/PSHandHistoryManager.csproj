@@ -34,7 +34,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -43,7 +43,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -68,6 +68,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigurationForm.Designer.cs">
+      <DependentUpon>ConfigurationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\FormHelper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -77,47 +83,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Setup\ArchiveFolderForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Setup\ArchiveFolderForm.Designer.cs">
-      <DependentUpon>ArchiveFolderForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Setup\ArchiveForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Setup\ArchiveForm.Designer.cs">
       <DependentUpon>ArchiveForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Setup\AutoRunHUDForm.cs">
+    <Compile Include="Setup\SetupHUDForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Setup\AutoRunHUDForm.Designer.cs">
-      <DependentUpon>AutoRunHUDForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Setup\AutoRunHUDPathForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Setup\AutoRunHUDPathForm.Designer.cs">
-      <DependentUpon>AutoRunHUDPathForm.cs</DependentUpon>
+    <Compile Include="Setup\SetupHUDForm.Designer.cs">
+      <DependentUpon>SetupHUDForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Setup\AutoRunProcessForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Setup\AutoRunProcessForm.Designer.cs">
       <DependentUpon>AutoRunProcessForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Setup\AutoRunPSForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Setup\AutoRunPSForm.Designer.cs">
-      <DependentUpon>AutoRunPSForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Setup\PokerStarsFormFolderManual.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Setup\PokerStarsFormFolderManual.Designer.cs">
-      <DependentUpon>PokerStarsFormFolderManual.cs</DependentUpon>
     </Compile>
     <Compile Include="Setup\PokerStarsFormInitial.cs">
       <SubType>Form</SubType>
@@ -146,12 +128,15 @@
     <Compile Include="Setup\StorageForm.Designer.cs">
       <DependentUpon>StorageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Setup\StorageModeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Setup\StorageModeForm.Designer.cs">
-      <DependentUpon>StorageModeForm.cs</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="ConfigurationForm.de-DE.resx">
+      <DependentUpon>ConfigurationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationForm.en-US.resx">
+      <DependentUpon>ConfigurationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationForm.resx">
+      <DependentUpon>ConfigurationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.de-DE.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,56 +156,29 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Setup\ArchiveFolderForm.de-DE.resx">
-      <DependentUpon>ArchiveFolderForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Setup\ArchiveFolderForm.en-US.resx">
-      <DependentUpon>ArchiveFolderForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Setup\ArchiveFolderForm.resx">
-      <DependentUpon>ArchiveFolderForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Setup\ArchiveForm.de-DE.resx">
       <DependentUpon>ArchiveForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Setup\ArchiveForm.resx">
       <DependentUpon>ArchiveForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Setup\AutoRunHUDForm.de-DE.resx">
-      <DependentUpon>AutoRunHUDForm.cs</DependentUpon>
+    <EmbeddedResource Include="Setup\SetupFinishForm.de-DE.resx">
+      <DependentUpon>SetupFinishForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Setup\AutoRunHUDForm.resx">
-      <DependentUpon>AutoRunHUDForm.cs</DependentUpon>
+    <EmbeddedResource Include="Setup\SetupHUDForm.de-DE.resx">
+      <DependentUpon>SetupHUDForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Setup\AutoRunHUDPathForm.de-DE.resx">
-      <DependentUpon>AutoRunHUDPathForm.cs</DependentUpon>
+    <EmbeddedResource Include="Setup\SetupHUDForm.en-US.resx">
+      <DependentUpon>SetupHUDForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Setup\AutoRunHUDPathForm.en-US.resx">
-      <DependentUpon>AutoRunHUDPathForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Setup\AutoRunHUDPathForm.resx">
-      <DependentUpon>AutoRunHUDPathForm.cs</DependentUpon>
+    <EmbeddedResource Include="Setup\SetupHUDForm.resx">
+      <DependentUpon>SetupHUDForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Setup\AutoRunProcessForm.de-DE.resx">
       <DependentUpon>AutoRunProcessForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Setup\AutoRunProcessForm.resx">
       <DependentUpon>AutoRunProcessForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Setup\AutoRunPSForm.de-DE.resx">
-      <DependentUpon>AutoRunPSForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Setup\AutoRunPSForm.resx">
-      <DependentUpon>AutoRunPSForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Setup\PokerStarsFormFolderManual.de-DE.resx">
-      <DependentUpon>PokerStarsFormFolderManual.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Setup\PokerStarsFormFolderManual.en-US.resx">
-      <DependentUpon>PokerStarsFormFolderManual.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Setup\PokerStarsFormFolderManual.resx">
-      <DependentUpon>PokerStarsFormFolderManual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Setup\PokerStarsFormInitial.de-DE.resx">
       <DependentUpon>PokerStarsFormInitial.cs</DependentUpon>
@@ -231,14 +189,12 @@
     <EmbeddedResource Include="Setup\PokerStarsFormInitial.resx">
       <DependentUpon>PokerStarsFormInitial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Setup\SetupFinishForm.de-DE.resx">
-      <DependentUpon>SetupFinishForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Setup\SetupFinishForm.resx">
       <DependentUpon>SetupFinishForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Setup\SetupInitialForm.de-DE.resx">
       <DependentUpon>SetupInitialForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Setup\SetupInitialForm.en-US.resx">
       <DependentUpon>SetupInitialForm.cs</DependentUpon>
@@ -251,15 +207,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Setup\StorageForm.resx">
       <DependentUpon>StorageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Setup\StorageModeForm.de-DE.resx">
-      <DependentUpon>StorageModeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Setup\StorageModeForm.en-US.resx">
-      <DependentUpon>StorageModeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Setup\StorageModeForm.resx">
-      <DependentUpon>StorageModeForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
