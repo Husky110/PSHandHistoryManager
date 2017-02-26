@@ -2,7 +2,7 @@
 
 ## Current release
 You can either clone the source and compile it yourself or you can download a precompiled version.  
-Download version 1.0.0.0-alpha here:  [Download](http://www.husky110.de/uploads/PSHandHistoryManager.zip) -  [Virus Total Scan](https://virustotal.com/de/file/2a36eea259407d8103066a592b9f3c1f9988da54f6bc5e07109ba6b8dd61e4ae/analysis/1488147328/)
+Download version 1.0.0.0-alpha here:  [Download](http://www.husky110.de/uploads/PSHandHistoryManager.zip) -  [Virus Total Scan](https://virustotal.com/de/file/950be594fed4f6d2800cf3d390f52dfaa4a5490ed79897c2226addc9d4fec141/analysis/1488150795/)
 
 ### Current features:
 For some detailed info, see section "What does it do?"
